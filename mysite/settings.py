@@ -122,3 +122,19 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+import os
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'    # with this django will write email to console rather than sending them 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'    # this will send the email through smtp.. currently commented 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PORT = 587
+EMAIL_USE_TLS = True
+# instead of hardcoding my details i have use environmental variable so not everyone can know my password and email if i post this on github etc..
+EMAIL_HOST_USER = os.environ.get('Email_ID')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')  # this is not ur gmail pass, u need to generate google app password, see some tutorial to know more
+
+
+
